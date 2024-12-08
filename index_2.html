@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            cursor: none;
+        }
+
+        header {
+            text-align: center;
+            padding: 1em;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .category {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .category img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category span {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em;
+            margin-top: auto;
+        }
+
+        .language-switch {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .language-switch button {
+            background: none;
+            border: 1px solid black;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        .language-switch button:hover {
+            background: black;
+            color: white;
+        }
+
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: black;
+            clip-path: polygon(50% 0, 0 100%, 100% 100%);
+            pointer-events: none;
+            z-index: 1000;
+        }
+    </style>
+    <script>
+        document.addEventListener("mousemove", (e) => {
+            const cursor = document.querySelector(".custom-cursor");
+            cursor.style.left = `${e.pageX}px`;
+            cursor.style.top = `${e.pageY}px`;
+        });
+
+        const translations = {
+            en: { about: "About Me", greeting: "Welcome!" },
+            ru: { about: "Обо мне", greeting: "Добро пожаловать!" },
+            de: { about: "Über mich", greeting: "Willkommen!" },
+        };
+
+        function setLanguage(lang) {
+            document.getElementById("about").innerText = translations[lang].about;
+        }
+    </script>
+</head>
+<body>
+    <div class="custom-cursor"></div>
+    <header>
+        <h1 id="about">About Me</h1>
+        <div class="language-switch">
+            <button onclick="setLanguage('en')">EN</button>
+            <button onclick="setLanguage('ru')">RU</button>
+            <button onclick="setLanguage('de')">DE</button>
+        </div>
+    </header>
+    <main>
+        <div class="category" onclick="location.href='#architecture'">
+            <img src="path/to/architecture.jpg" alt="Architecture">
+            <span>Architecture</span>
+        </div>
+        <div class="category" onclick="location.href='#design'">
+            <img src="path/to/design.jpg" alt="Design">
+            <span>Design</span>
+        </div>
+        <div class="category" onclick="location.href='#drawing'">
+            <img src="path/to/drawing.jpg" alt="Drawing">
+            <span>Drawing</span>
+        </div>
+        <div class="category" onclick="location.href='#photography'">
+            <img src="path/to/photography.jpg" alt="Photography">
+            <span>Photography</span>
+        </div>
+        <div class="category" onclick="location.href='#logos'">
+            <img src="path/to/logos.jpg" alt="Logos">
+            <span>Logos</span>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Creative Portfolio</p>
+    </footer>
+</body>
+</html>
